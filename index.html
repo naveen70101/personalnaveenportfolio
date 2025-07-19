@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveen G | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Naveen G.</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Hello, I'm Naveen G.</h1>
+        <p class="role-line">I’m a <span id="typing-text"></span></p>
+        <a href="Naveen_G_CV.pdf" download class="btn primary">📄 Download CV</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/naveen.jpg" alt="Naveen G" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Services</h2>
+    <div class="service-list">
+      <div class="service">
+        <h3>Web Design</h3>
+        <p>Modern and clean layouts using HTML & CSS.</p>
+      </div>
+      <div class="service">
+        <h3>Responsive Design</h3>
+        <p>Websites that look great on all screen sizes.</p>
+      </div>
+      <div class="service">
+        <h3>UI/UX Optimization</h3>
+        <p>User-friendly designs and smooth interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project">
+        <h3>Product Landing Page</h3>
+        <p>Responsive single-page site showcasing a product.</p>
+      </div>
+      <div class="project">
+        <h3>Login + Signup Form</h3>
+        <p>Styled forms using pure HTML & CSS with transitions.</p>
+      </div>
+      <div class="project">
+        <h3>Multi-page E-commerce Website</h3>
+        <p>Multiple pages: Home, Products, Cart, Checkout.</p>
+      </div>
+      <div class="project">
+        <h3>Portfolio with Dark/Light Mode</h3>
+        <p>Toggle themes using JS and CSS variables.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" class="certificates">
+    <h2>Certificates</h2>
+    <div class="certificate-card">
+      <img src="images/certificate.jpg" alt="My Certificate" />
+      <h3>Honours Diploma in Full Stack Developer</h3>
+      <p>Issued by CSC Computer Software College</p>
+      <p>Date: 24-May-2025</p>
+      <a href="images/certificate.jpg" target="_blank" class="btn">View Certificate</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:naveen8b11@gmail.com">naveen8b11@gmail.com</a></p>
+    <p>Phone: <a href="tel:7010140448">7010140448</a></p>
+  </section>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    toggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      toggle.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+
+    // Typing effect for role
+    const typingText = document.getElementById("typing-text");
+    const titles = ["Frontend Developer", "Web Developer"];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentTitle = titles[titleIndex];
+
+      if (isDeleting) {
+        charIndex--;
+      } else {
+        charIndex++;
+      }
+
+      typingText.textContent = currentTitle.substring(0, charIndex);
+
+      if (!isDeleting && charIndex === currentTitle.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1500);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        setTimeout(typeEffect, 400);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 60 : 100);
+      }
+    }
+
+    typeEffect();
+  </script>
+</body>
+
+</html>
